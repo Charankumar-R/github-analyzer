@@ -14,7 +14,7 @@ jobs:
     env:
       # Check cloc docs for supported languages and exact names (e.g., "Vuejs Component", "C#")
       # HIGHLIGHT_LANGS: show these languages individually; everything else goes to "Others"
-      HIGHLIGHT_LANGS: "JavaScript,TypeScript,JSX,Vuejs Component,PHP,C#,HTML,CSS,C,Python"
+      HIGHLIGHT_LANGS: "JavaScript,TypeScript,JSX,Vuejs Component,PHP,C#,HTML,CSS,C,Python,Java,Kotlin,Go,Rust,Swift"
 
       # IGNORE_LANGS: drop these languages entirely (not shown and not counted)
       IGNORE_LANGS: "JSON,SCSS,Sass,Markdown,SVG,XML,YAML,TOML,CSV,Text,Properties"
@@ -38,7 +38,7 @@ jobs:
           USERNAME="Charankumar-R"
 
           # Get a list of public repositories that are not forks
-          REPOS=$(curl -H "Authorization: token $GH_PAT" -s "https://api.github.com/user/repos?per_page=100" | jq -r '.[] | select(.fork == false) | .full_name') || echo "Error fetching repositories"
+          REPOS=$(curl -H "Authorization: token $GH_PAT" -s "https://api.github.com/users/Charankumar-R/repos?per_page=100&page=1" | jq -r '.[] | select(.fork == false) | .full_name') || echo "Error fetching repositories"
 
           mkdir -p public-repos
           cd public-repos
